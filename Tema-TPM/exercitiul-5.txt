@@ -1,0 +1,24 @@
+
+LOCK( Process PID){
+    for( int i = 0;i<N;++i){
+		//iteram prin coada de la pozitia 0 la n (finalul ei)
+        victim[i]=PID;
+		// procesul pid este la a i-a pozitie
+        level[PID]=i;
+        while((for all k != PID, Flag[k]<i) or (Turn[i] != PID))
+        ; 
+			//procesul asteapta pana cand nu mai sunt alte procese
+			//in coada 
+    }
+}
+/* Critical Section */ 
+UNLOCK(Process PID){
+    level[PID]=-1  
+	//procesul iese din coada sau se încheie
+    else
+    level[PID]=0 
+}
+
+
+Algoritmul lui Peterson generalizat in acel mod nu este echilibrat (fair) deoarece cauzeaza
+starvation. 

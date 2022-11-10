@@ -1,0 +1,15 @@
+------------------------------------EXERCITIUL 2----------------------------------------------------------------------------
+
+
+De ce in mod obisnuit in utilizarea unui lock se prefera ca apelul lock() sa fie executat inainte de blocul try,
+si nu in cadrul acestuia (prima varianta de mai jos si nu a doua)? Argumentati
+
+Raspuns:
+
+Stim ca lock() obtine lockul doar daca este disponibil, altfel firul de executie este blocat pana cand lockul este eliberat.
+In utilizarea unui lock se prefera ca apelul lock() sa fie executat inainte de blocul try pentru ca exceptia neverificata din lock()
+sa nu conduca la apelul incorect al lui unlock(). De asemenea, daca folosim lock() inainte de blocul try, atunci in "finally" putem apela
+unlock(), in cazul al doilea va trebui sa verificam daca lock ul este obtinut inainte sa facem unlock() pentru a nu primi exceptia de tipul
+IllegalMonitorStateException. Prima varianta este preferata pentru ca pentru a trata exceptia lui lock() trebuie sa folosim un try separat. 
+
+
